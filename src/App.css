@@ -1,38 +1,419 @@
-.App {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
   text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e5eb;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header h1 {
+  color: #2c3e50;
+  margin-bottom: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.subtitle {
+  color: #7f8c8d;
+  margin-top: 0;
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+}
+
+.form-section {
+  flex: 1;
+  max-width: 400px;
+}
+
+/* Goal Form Styles */
+.goal-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.goal-form h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Goal List Styles */
+.goal-list {
+  flex: 2;
+}
+
+.no-goals {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #7f8c8d;
+}
+
+/* Goal Item Styles */
+.goal-item {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.goal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.goal-actions button {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.goal-actions button:hover {
+  background: #f5f7fa;
+}
+
+.goal-actions button:first-child {
+  color: #3498db;
+  border-color: #3498db;
+}
+
+.goal-actions button:last-child {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.smart-criteria div {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.smart-criteria strong {
+  color: #34495e;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-top: 20px;
+}
+
+.progress-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.progress-section input[type="range"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #ecf0f1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+/* Progress Tracker Styles */
+.progress-tracker {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-tracker h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.completion-stats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.completion-circle {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: #3498db;
+  stroke-width: 3;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0, 100;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.percentage {
+  fill: #2c3e50;
+  font-size: 0.5em;
+  text-anchor: middle;
+  font-weight: bold;
+}
+
+.completion-text {
+  font-size: 18px;
+}
+
+.priority-stats h3 {
+  margin-bottom: 10px;
+}
+
+.priority-bars {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+}
+
+.priority-bar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.priority-bar.high {
+  background-color: #ff6b6b;
+}
+
+.priority-bar.medium {
+  background-color: #ffd166;
+}
+
+.priority-bar.low {
+  background-color: #06d6a0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .form-section {
+    max-width: 100%;
+  }
+}
+
+.goal-item {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.goal-meta {
+  display: flex;
+  gap: 15px;
+  color: #666;
+}
+
+.category {
+  background: #e3f2fd;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.deadline {
+  color: #e91e63;
+}
+
+.goal-progress {
+  margin-top: 15px;
+}
+
+.amounts {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4CAF50;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  text-align: right;
+  color: #666;
+}
+
+.progress-tracker {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.progress-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 10px auto;
 }
 
-.App-link {
-  color: #61dafb;
+.progress-circle span {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.category-progress {
+  margin-top: 20px;
+}
+
+.category-item {
+  margin-bottom: 10px;
+}
+
+.category-name {
+  display: inline-block;
+  width: 120px;
+}
+
+.category-percent {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
