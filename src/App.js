@@ -107,7 +107,7 @@ function App() {
           goals={goals}
           deleteGoal={deleteGoal}
           startEditing={setEditingGoal}
-          updateSavedAmount={updateSavedAmount}
+          updateProgress={updateSavedAmount} 
         />
       </div>
     </div>

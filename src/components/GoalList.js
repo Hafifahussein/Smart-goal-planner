@@ -15,7 +15,7 @@ const GoalList = ({ goals, deleteGoal, startEditing, updateProgress }) => {
           goal={goal}
           deleteGoal={deleteGoal}
           startEditing={startEditing}
-          updateProgress={updateProgress}
+          updateProgress={updateProgress} 
         />
       ))}
     </div>

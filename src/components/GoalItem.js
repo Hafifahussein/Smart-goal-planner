@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react'
 
-const GoalItem = ({ goal, deleteGoal, startEditing, updateSavedAmount }) => {
-
+const GoalItem = ({ goal, deleteGoal, startEditing, updateProgress }) => {
   const safeTargetAmount = Number(goal?.targetAmount) || 0
   const initialSavedAmount = Number(goal?.savedAmount) || 0
 
-  const [savedAmount, setSavedAmount] = useState(initialSavedAmount)
+  const [inputValue, setInputValue] = useState(initialSavedAmount)
 
-
+  // Sync with props
   useEffect(() => {
-    setSavedAmount(initialSavedAmount)
+    setInputValue(initialSavedAmount)
   }, [initialSavedAmount])
 
-  const handleAmountChange = (e) => {
+  const handleAmountChange = async (e) => {
     const value = parseFloat(e.target.value) || 0
     const clampedValue = Math.min(safeTargetAmount, Math.max(0, value))
-    setSavedAmount(clampedValue)
-    updateSavedAmount(goal.id, clampedValue)
+
+    setInputValue(clampedValue)
+    await updateProgress(goal.id, clampedValue)
   }
 
-  // Safely calculate progress percentage
   const progressPercentage =
     safeTargetAmount > 0 ? Math.min(100, (initialSavedAmount / safeTargetAmount) * 100) : 0
 
@@ -44,7 +43,7 @@ const GoalItem = ({ goal, deleteGoal, startEditing, updateSavedAmount }) => {
         </div>
         <input
           type="number"
-          value={savedAmount}
+          value={inputValue}
           onChange={handleAmountChange}
           min="0"
           max={safeTargetAmount}
