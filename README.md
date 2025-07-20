@@ -31,8 +31,8 @@ Follow these steps to set up and run the project locally.
 ### 1. 📦 Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/goal-tracker-app.git
-cd goal-tracker-app
+git clone https://github.com/your-username/ smartgoal-tracker-app.git
+cd smart-goal-tracker-app
 
 ### npm install
 ###  npm start
